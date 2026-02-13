@@ -1,0 +1,9 @@
+# Exclude Android and dev files from Vercel deployment
+android/
+node_modules/
+www/
+scripts/
+.env
+.env.local
+*.log
+.git/

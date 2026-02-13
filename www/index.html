@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PCPDZPTVJF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PCPDZPTVJF');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StreamFlix - Watch Movies & TV Shows</title>
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://image.tmdb.org">
+  <link rel="preconnect" href="https://api.themoviedb.org">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://quge5.com/88/tag.min.js" data-zone="209846" async data-cfasync="false"></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <a href="#" class="logo" id="nav-logo" data-filter="all">StreamFlix</a>
+      <ul class="nav-links">
+        <li><a href="#" class="active" data-filter="movie">Movies</a></li>
+        <li><a href="#" data-filter="tv">TV Shows</a></li>
+        <li><a href="#" data-filter="anime">Anime</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <div class="search-container search-prominent active">
+        <div class="search-input-wrap">
+          <input type="text" id="search-input" placeholder="Search movies and series..." class="search-input" autocomplete="off">
+        </div>
+        <button class="search-btn" aria-label="Search">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="profile-menu">
+        <div class="profile-avatar">U</div>
+        <div class="profile-dropdown">
+          <a href="#" id="admin-link">Admin</a>
+          <a href="#" id="account-link">Account</a>
+          <a href="#" id="signout-link">Sign Out</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero / Featured Content -->
+  <section class="hero" id="hero-section">
+    <div class="hero-backdrop"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Search for a movie</h1>
+      <p class="hero-description">Use the search bar above to find movies and TV shows. Click Play to watch.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-play hero-play" id="hero-play-btn" style="display:none">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          Play
+        </button>
+        <button class="btn btn-info hero-more" id="hero-more-btn" style="display:none">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4M12 8h.01"></path></svg>
+          More Info
+        </button>
+      </div>
+    </div>
+    <div class="hero-gradient"></div>
+  </section>
+
+  <!-- Search Results Section -->
+  <section class="search-results-section" id="search-results-section" style="display:none">
+    <h2 class="search-results-title" id="search-results-title">Search results</h2>
+    <div class="search-results-grid" id="search-results-grid"></div>
+  </section>
+
+  <!-- Content Rows -->
+  <section class="content-section">
+    <!-- Movies -->
+    <div class="content-row" data-type="movie">
+      <h2 class="row-title">Trending Movies</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="trending_movies"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="content-row" data-type="movie">
+      <h2 class="row-title">Top Rated Movies</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="top_rated_movies"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="content-row" data-type="movie">
+      <h2 class="row-title">Popular Movies</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="popular_movies"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="content-row" data-type="movie">
+      <h2 class="row-title">Action & Adventure</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="action_movies"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="content-row" data-type="movie">
+      <h2 class="row-title">Sci-Fi & Fantasy</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="scifi_movies"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="content-row" data-type="movie">
+      <h2 class="row-title">Comedy Movies</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="comedy_movies"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- TV Series -->
+    <div class="content-row" data-type="tv">
+      <h2 class="row-title">Trending TV Shows</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="trending_tv"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="content-row" data-type="tv">
+      <h2 class="row-title">Top Rated TV Shows</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="top_rated_tv"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="content-row" data-type="tv">
+      <h2 class="row-title">Popular TV Shows</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="popular_tv"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="content-row" data-type="tv">
+      <h2 class="row-title">Drama TV Shows</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="drama_tv"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="content-row" data-type="tv">
+      <h2 class="row-title">Comedy TV Shows</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="comedy_tv"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Anime -->
+    <div class="content-row" data-type="anime">
+      <h2 class="row-title">Anime Movies</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="anime_movies"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="content-row" data-type="anime">
+      <h2 class="row-title">Anime TV Shows</h2>
+      <div class="row-container">
+        <button class="row-nav row-nav-left" aria-label="Scroll left">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+        </button>
+        <div class="movie-row" data-row="anime_tv"></div>
+        <button class="row-nav row-nav-right" aria-label="Scroll right">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Episode Picker Modal (for series) -->
+  <div class="modal" id="episode-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content episode-picker-content">
+      <button class="modal-close episode-modal-close" aria-label="Close">&times;</button>
+      <h2 class="episode-picker-title" id="episode-picker-title">Select episode</h2>
+      <div class="season-selector" id="season-selector"></div>
+      <div class="episode-list" id="episode-list"></div>
+    </div>
+  </div>
+
+  <!-- Movie Detail Modal -->
+  <div class="modal" id="movie-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Close">&times;</button>
+      <div class="modal-poster"></div>
+      <div class="modal-info">
+        <h2 class="modal-title"></h2>
+        <p class="modal-description"></p>
+        <div class="modal-meta">
+          <span class="modal-rating"></span>
+          <span class="modal-year"></span>
+          <span class="modal-duration"></span>
+        </div>
+        <div class="modal-actions">
+          <button class="btn btn-play modal-play">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Play
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Password Modal -->
+  <div class="modal" id="admin-password-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content admin-content">
+      <button class="modal-close admin-password-close" aria-label="Close">&times;</button>
+      <h2 class="admin-title">Admin Access</h2>
+      <div class="admin-password-form">
+        <input type="password" id="admin-password-input" placeholder="Enter password" autocomplete="off">
+        <p class="admin-password-error" id="admin-password-error" style="display:none">Incorrect password</p>
+        <button class="btn btn-play" id="admin-password-submit">Enter</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Modal -->
+  <div class="modal" id="admin-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content admin-content">
+      <button class="modal-close admin-close" aria-label="Close">&times;</button>
+      <h2 class="admin-title">Admin</h2>
+      <div class="admin-actions">
+        <button class="btn btn-play" id="admin-settings-btn">Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account Modal (placeholder) -->
+  <div class="modal" id="account-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content admin-content">
+      <button class="modal-close account-close" aria-label="Close">&times;</button>
+      <h2 class="admin-title">Account</h2>
+      <p class="account-placeholder">Account management coming soon.</p>
+    </div>
+  </div>
+
+  <!-- Sign Out Modal (placeholder) -->
+  <div class="modal" id="signout-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content admin-content">
+      <button class="modal-close signout-close" aria-label="Close">&times;</button>
+      <h2 class="admin-title">Sign Out</h2>
+      <p class="account-placeholder">Sign out coming soon.</p>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal" id="settings-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content settings-content">
+      <button class="modal-close settings-close" aria-label="Close">&times;</button>
+      <h2 class="settings-title">Settings</h2>
+      <div class="settings-section">
+        <p class="settings-hint">Playback uses StremThru (ElfHosted) only. Set <code>STREMTHRU_STREAM_BASE_URL</code> to your wrapped addon base URL (no <code>/manifest.json</code>) so streams play on your site and Real-Debrid only sees one IP. In Vercel use project env; for local <code>server.py</code> use a <code>.env</code> file.</p>
+        <button class="btn btn-play save-settings-btn" id="settings-ok-btn">OK</button>
+      </div>
+      <p class="settings-status" id="settings-status"></p>
+    </div>
+  </div>
+
+  <!-- Stream Picker Modal (Torrentio) -->
+  <div class="modal" id="stream-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content stream-picker-content">
+      <button class="modal-close stream-modal-close" aria-label="Close">&times;</button>
+      <h2 class="stream-picker-title">Choose a stream</h2>
+      <div class="stream-list" id="stream-list"></div>
+      <div class="stream-loading" id="stream-loading">Loading streams...</div>
+      <div class="stream-error" id="stream-error"></div>
+    </div>
+  </div>
+
+  <!-- Video Player Modal -->
+  <div class="modal video-modal" id="video-modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content video-content">
+      <button class="modal-close video-close" aria-label="Close">&times;</button>
+      <div class="video-wrapper">
+        <video id="demo-video" controls>
+          <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="custom-volume-control" id="custom-volume-control">
+          <button class="volume-btn" id="volume-btn" aria-label="Volume">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+          </button>
+          <input type="range" class="volume-slider" id="volume-slider" min="0" max="1" step="0.05" value="1">
+          <button class="cc-btn" id="cc-btn" aria-label="Subtitles" title="Subtitles">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm10 6H4v-2h10v2zm6 0h-4v-2h4v2zm0-4H6v-2h12v2z"/></svg>
+          </button>
+          <div class="subtitle-panel" id="subtitle-panel">
+            <input type="text" class="subtitle-url-input" placeholder="Paste .vtt subtitle URL">
+            <small>Use WebVTT (.vtt) format. Find subs at opensubtitles.org</small>
+            <button class="btn btn-play load-subtitle-btn">Load</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="#">About</a>
+      <a href="#">Help Center</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </div>
+    <p class="footer-copy">&copy; 2025 StreamFlix. Demo only.</p>
+  </footer>
+
+  <!-- Auth0 SPA SDK -->
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.14/auth0-spa-js.production.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>

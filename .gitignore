@@ -1,0 +1,11 @@
+.env
+.env.local
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+*.keystore
+android/keystore.properties
+android/.gradle
+android/app/build
+android/build

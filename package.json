@@ -1,0 +1,34 @@
+{
+  "name": "streamflix",
+  "version": "1.0.0",
+  "description": "StreamFlix - Watch Movies & TV Shows",
+  "main": "index.html",
+  "scripts": {
+    "build": "npm run copy-web && cap sync",
+    "copy-web": "node scripts/copy-web.js",
+    "cap:sync": "cap sync",
+    "cap:open:android": "cap open android",
+    "android:build:apk": "cd android && ./gradlew assembleRelease",
+    "android:build:aab": "cd android && ./gradlew bundleRelease",
+    "vercel": "vercel"
+  },
+  "capabilities": {
+    "config": {
+      "appId": "com.streamflix.app",
+      "appName": "StreamFlix"
+    }
+  },
+  "keywords": [
+    "streaming",
+    "movies",
+    "tv-shows"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@capacitor/android": "^8.1.0",
+    "@capacitor/cli": "^8.1.0",
+    "@capacitor/core": "^8.1.0"
+  }
+}

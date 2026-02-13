@@ -1,0 +1,12 @@
+{
+  "appId": "com.streamflix.app",
+  "appName": "StreamFlix",
+  "webDir": "www",
+  "server": {
+    "url": "https://YOUR-DEPLOYED-URL.vercel.app",
+    "cleartext": false
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
